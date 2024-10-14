@@ -3,6 +3,7 @@ import { AppContainer, GlobalStyle } from './App.style'
 import { useAppContext } from './context/App.context';
 import { useContext } from 'react';
 import { THEMES } from './utils/themes';
+import { Header } from './components/header/Header';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
 			<ThemeProvider theme={THEMES[theme]}>
 				<GlobalStyle />
 				<AppContainer>
-					Hello from react with TS
+					<Header />
 				</AppContainer>
 			</ThemeProvider>
 		</>

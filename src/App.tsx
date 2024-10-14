@@ -1,14 +1,16 @@
 import { ThemeProvider } from 'styled-components'
 import { AppContainer, GlobalStyle } from './App.style'
-import { THEMES } from './utils/themes'
+import { useAppContext } from './context/App.context';
+import { useContext } from 'react';
+import { THEMES } from './utils/themes';
 
 function App() {
 
-	const currentTheme = 'dark';
+	const { theme } = useAppContext();
 
 	return (
 		<>
-			<ThemeProvider theme={THEMES[currentTheme]}>
+			<ThemeProvider theme={THEMES[theme]}>
 				<GlobalStyle />
 				<AppContainer>
 					Hello from react with TS

@@ -7,7 +7,7 @@ export const AuthButton = (): JSX.Element => {
     return (
         <StyledAuthButton>
             <FaUserCircle size={22} />
-            <Text>Sign In</Text>
+            <Text className='auth'>Sign In</Text>
         </StyledAuthButton>
     )
 }

@@ -10,4 +10,8 @@ font-size: 14px;
     letter-spacing: -1px;
     font-family: "Oswald", sans-serif;
 } 
+
+&.auth{
+    color: ${({ theme }) => theme.authBlue};
+}
 `;

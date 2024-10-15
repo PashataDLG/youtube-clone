@@ -21,7 +21,7 @@ interface IAppContextProviderProps {
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
-    const [theme, setTheme] = React.useState<'light' | 'dark'>('dark');
+    const [theme, setTheme] = React.useState<'light' | 'dark'>('dark'); 
 
     const value = {
         theme,

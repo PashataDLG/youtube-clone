@@ -13,3 +13,18 @@ export const StyledSettings = styled.div`
     box-shadow: 0px 10px 43px -3px ${({ theme }) => theme.settingsShadow};
     z-index: 1000000;
 `;
+
+export const Setting = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 3rem;
+    padding-left: 1rem;
+    color: ${({ theme }) => theme.text};
+
+    &:hover{
+        background-color: ${({ theme }) => theme.grey2};
+        curosr: pointer;
+    }
+`;

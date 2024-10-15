@@ -1,10 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
+import { ITranslations, LANGUAGE } from '../utils/translations';
 
 interface IAppContextValue {
     theme: 'light' | 'dark';
     language: 'english' | 'french';
     toggleTheme: () => void;
     toggleLanguage: () => void;
+    text: ITranslations;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
@@ -40,6 +42,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
         language,
         toggleTheme,
         toggleLanguage,
+        text: LANGUAGE[language]
     };
 
     return (

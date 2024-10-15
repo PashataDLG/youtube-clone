@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaYoutube } from "react-icons/fa";
 import { HeaderMoreSection, LeftSection, LogoSection, SearchSection, StyledHeader } from "./Header.styles";
 import { SlMenu } from "react-icons/sl";
@@ -9,7 +9,7 @@ import { CgMoreVerticalAlt } from "react-icons/cg";
 import { Settings } from "../Settings/Settings";
 
 export const Header = (): JSX.Element => {
-    const [showSettings, setShowSettings] = React.useState(false);
+    const [showSettings, setShowSettings] = useState<boolean>(false);
 
     return (
         <>

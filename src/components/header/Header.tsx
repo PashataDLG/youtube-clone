@@ -4,6 +4,7 @@ import { HeaderMoreSection, LeftSection, LogoSection, SearchSection, StyledHeade
 import { SlMenu } from "react-icons/sl";
 import { Text } from "../../utils/text.styles";
 import { Icon } from "../../utils/icon.styles";
+import { AuthButton } from "../authButton/AuthButton";
 
 export const Header = (): JSX.Element => {
     return (
@@ -19,7 +20,9 @@ export const Header = (): JSX.Element => {
                     </LogoSection>
                 </LeftSection>
                 <SearchSection>Search Section</SearchSection>
-                <HeaderMoreSection></HeaderMoreSection>
+                <HeaderMoreSection>
+                    <AuthButton />
+                </HeaderMoreSection>
             </StyledHeader>
         </>
     );

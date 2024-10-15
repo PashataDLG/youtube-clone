@@ -8,8 +8,6 @@ import { AuthButton } from "../authButton/AuthButton";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import { Settings } from "../Settings/Settings";
 
-
-
 export const Header = (): JSX.Element => {
     const [showSettings, setShowSettings] = React.useState(false);
 

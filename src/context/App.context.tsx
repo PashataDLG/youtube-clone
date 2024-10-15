@@ -2,7 +2,9 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface IAppContextValue {
     theme: 'light' | 'dark';
+    language: 'english' | 'french';
     toggleTheme: () => void;
+    toggleLanguage: () => void;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
@@ -23,14 +25,21 @@ interface IAppContextProviderProps {
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
     const [theme, setTheme] = useState<'light' | 'dark'>('dark'); 
+    const [language, setLanguage] = useState<'english' | 'french'>('english');
 
     const toggleTheme = (): void => {
-        setTheme((prevTheme) => prevTheme === 'light' ? 'dark' : 'light');
+        setTheme((currTheme) => currTheme === 'light' ? 'dark' : 'light');
+    };
+
+    const toggleLanguage = (): void => {
+        setLanguage((currLanguage) => currLanguage === 'english' ? 'french' : 'english');
     };
 
     const values = {
         theme,
-        toggleTheme
+        language,
+        toggleTheme,
+        toggleLanguage,
     };
 
     return (

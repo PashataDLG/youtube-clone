@@ -4,6 +4,7 @@ import { useAppContext } from './context/App.context';
 import { useContext } from 'react';
 import { THEMES } from './utils/themes';
 import { Header } from './components/header/Header';
+import { ToolTips } from './utils/toolTips.style';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
 		<>
 			<ThemeProvider theme={THEMES[theme]}>
 				<GlobalStyle />
+				<ToolTips />
 				<AppContainer>
 					<Header />
 				</AppContainer>

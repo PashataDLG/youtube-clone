@@ -25,6 +25,6 @@ export const Setting = styled.div`
 
     &:hover{
         background-color: ${({ theme }) => theme.grey2};
-        curosr: pointer;
+        cursor: pointer;
     }
 `;

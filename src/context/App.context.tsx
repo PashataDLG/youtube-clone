@@ -1,13 +1,14 @@
-import React, { createContext, ReactNode } from 'react';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface IAppContextValue {
     theme: 'light' | 'dark';
+    toggleTheme: () => void;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
 
 export const useAppContext = () => {
-    const appContext = React.useContext(AppContext);
+    const appContext = useContext(AppContext);
     if (!appContext) {
         throw new Error('useAppContext must be used within an AppContextProvider');
     };
@@ -21,14 +22,19 @@ interface IAppContextProviderProps {
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
-    const [theme, setTheme] = React.useState<'light' | 'dark'>('dark'); 
+    const [theme, setTheme] = useState<'light' | 'dark'>('dark'); 
 
-    const value = {
+    const toggleTheme = (): void => {
+        setTheme((prevTheme) => prevTheme === 'light' ? 'dark' : 'light');
+    };
+
+    const values = {
         theme,
+        toggleTheme
     };
 
     return (
-        <AppContext.Provider value={value}>
+        <AppContext.Provider value={values}>
             {children}
         </AppContext.Provider>
     )

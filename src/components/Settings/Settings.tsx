@@ -2,6 +2,7 @@ import { Setting, StyledSettings } from "./Settings.style";
 import { HiLanguage } from "react-icons/hi2";
 import { GoMoon } from "react-icons/go";
 import { Text } from "../../utils/text.styles";
+import { useAppContext } from "../../context/App.context";
 
 interface SettingObjProps {
     label: string;
@@ -11,6 +12,8 @@ interface SettingObjProps {
 };
 
 export const Settings = (): JSX.Element => {
+    const { theme, toggleTheme } = useAppContext();
+
     const SETTINGS = [
         {
             label: "Language",
@@ -21,8 +24,8 @@ export const Settings = (): JSX.Element => {
         {
             label: "Appearance",
             icon: <GoMoon size={23} />,
-            value: "United States",
-            onClick: () => null,
+            value: theme,
+            onClick: () => toggleTheme(),
         }
     ];
 

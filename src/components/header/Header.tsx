@@ -40,16 +40,28 @@ export const Header = (): JSX.Element => {
                             value={searchText}
                             placeholder={text.search}
                             onChange={e => setSearchText(e.target.value)}
-                            onClick={() => setSearchBarText(searchText)}
                         />
-                        <Icon data-tooltip-id="voiceSearch" data-tooltip-content={text.voiceSearch} $showBackground={true}>
-                            <LuSearch  size={21} />
+                        <Icon
+                            data-tooltip-id="search"
+                            data-tooltip-content={text.search} 
+                            onClick={() => setSearchBarText(searchText)}>
+                            <LuSearch size={19} />
                         </Icon>
                     </SearchBar>
+                    <Icon
+                            data-tooltip-id="voiceSearch"
+                            data-tooltip-content={text.voiceSearch} 
+                            onClick={() => null} 
+                            $showBackground>
+                            <FaMicrophone size={19} />
+                        </Icon>
                 </SearchSection>
                 <HeaderMoreSection>
-
-                    <Icon data-tooltip-id="settings" data-tooltip-content="Settings" onClick={() => setShowSettings(currentState => !currentState)}>
+                    <Icon
+                        data-tooltip-id="settings"
+                        data-tooltip-content="Settings"
+                        onClick={() => setShowSettings(currentState => !currentState
+                        )}>
                         <CgMoreVerticalAlt size={21} />
                     </Icon>
                     <AuthButton />

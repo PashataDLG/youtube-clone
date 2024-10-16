@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 import { ITranslations, LANGUAGE } from '../utils/translations';
 
 interface IAppContextValue {
@@ -7,6 +7,8 @@ interface IAppContextValue {
     toggleTheme: () => void;
     toggleLanguage: () => void;
     text: ITranslations;
+    searchBarText: string;
+    setSearchBarText: Dispatch<SetStateAction<string>>;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
@@ -28,6 +30,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
     const [theme, setTheme] = useState<'light' | 'dark'>('dark'); 
     const [language, setLanguage] = useState<'english' | 'french'>('english');
+    const [searchBarText, setSearchBarText] = useState<string>('');
 
     const toggleTheme = (): void => {
         setTheme((currTheme) => currTheme === 'light' ? 'dark' : 'light');
@@ -42,7 +45,9 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
         language,
         toggleTheme,
         toggleLanguage,
-        text: LANGUAGE[language]
+        text: LANGUAGE[language],
+        searchBarText,
+        setSearchBarText
     };
 
     return (

@@ -20,7 +20,7 @@ export const Header = (): JSX.Element => {
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
 
-    const { text } = useAppContext();
+    const { text, setSearchBarText } = useAppContext();
 
     return (
         <>
@@ -40,8 +40,9 @@ export const Header = (): JSX.Element => {
                             value={searchText}
                             placeholder={text.search}
                             onChange={e => setSearchText(e.target.value)}
+                            onClick={() => setSearchBarText(searchText)}
                         />
-                        <Icon>
+                        <Icon data-tooltip-id="voiceSearch" data-tooltip-content={text.voiceSearch} $showBackground={true}>
                             <LuSearch  size={21} />
                         </Icon>
                     </SearchBar>

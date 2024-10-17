@@ -21,7 +21,7 @@ export const Header = (): JSX.Element => {
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
 
-    const { text, setSearchBarText } = useAppContext();
+    const { text, setSearchBarText, toggleMenuSize } = useAppContext();
 
     const {
         transcript,
@@ -51,7 +51,7 @@ export const Header = (): JSX.Element => {
         <>
             <StyledHeader>
                 <LeftSection>
-                    <Icon className="menu">
+                    <Icon className="menu" onClick={() => toggleMenuSize()}>
                         <SlMenu size={17} />
                     </Icon>
                     <LogoSection to="/">

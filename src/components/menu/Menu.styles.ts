@@ -22,6 +22,13 @@ export const StyledMenu = styled.div`
 export const LargeMenuSection = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.divider};
     padding: .7rem 0;
+
+    &.text{
+        padding: 1.1rem 0 1.1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 `;
 
 export const MenuItem = styled.div`

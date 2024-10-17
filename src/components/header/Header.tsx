@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import {
     HeaderMoreSection,
@@ -28,18 +28,24 @@ export const Header = (): JSX.Element => {
         listening,
         resetTranscript,
         browserSupportsSpeechRecognition
-      } = useSpeechRecognition();
+    } = useSpeechRecognition();
 
-      if (!browserSupportsSpeechRecognition) {
+    useEffect(() => {
+        setSearchText(transcript);
+        setSearchBarText(transcript);
+    }, [transcript]);
+
+    if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
-      }
+    }
 
-      const handleVoiceSearchClick: MouseEventHandler<HTMLDivElement> = () => {
-        SpeechRecognition.startListening({ continuous: true, interimResults: true });
-      };
-
-      console.log("Transcript", transcript);
-      console.log("Listening", listening);
+    const handleVoiceSearchClick: MouseEventHandler<HTMLDivElement> = () => {
+        if (listening) {
+            SpeechRecognition.stopListening();
+        } else {
+            SpeechRecognition.startListening({ continuous: true, interimResults: true });
+        };
+    };
 
     return (
         <>
@@ -62,19 +68,19 @@ export const Header = (): JSX.Element => {
                         />
                         <Icon
                             data-tooltip-id="search"
-                            data-tooltip-content={text.search} 
+                            data-tooltip-content={text.search}
                             onClick={() => setSearchBarText(searchText)}>
                             <LuSearch size={19} />
                         </Icon>
                     </SearchBar>
                     <Icon
-                            data-tooltip-id="voiceSearch"
-                            data-tooltip-content={text.voiceSearch} 
-                            onClick={handleVoiceSearchClick} 
-                            $showBackground
-                            className={listening ? 'listening' : ''}>
-                            <FaMicrophone size={19} />
-                        </Icon>
+                        data-tooltip-id="voiceSearch"
+                        data-tooltip-content={text.voiceSearch}
+                        onClick={handleVoiceSearchClick}
+                        $showBackground
+                        className={listening ? 'listening' : ''}>
+                        <FaMicrophone size={19} />
+                    </Icon>
                 </SearchSection>
                 <HeaderMoreSection>
                     <Icon

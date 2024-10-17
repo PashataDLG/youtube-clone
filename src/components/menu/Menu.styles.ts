@@ -11,6 +11,17 @@ export const StyledMenu = styled.div`
     
     scrollbar-width: none;
     -ms-overflow-style: none;
+
+    .title{
+        font-size: 16px;
+        margin: 0 0 .5rem 1.7rem;
+        font-weight: bold;
+    }
+`;
+
+export const LargeMenuSection = styled.div`
+    border-bottom: 1px solid ${({ theme }) => theme.divider};
+    padding: .7rem 0;
 `;
 
 export const MenuItem = styled.div`
@@ -29,6 +40,15 @@ export const MenuItem = styled.div`
         p{
             font-size: 10px;
         }
+    }
+
+    &.large{
+        padding-left: 0.8rem;
+        height: 2.5rem;
+        margin-left: 0.75rem;
+        align-items: center;
+        font-size: 23px;
+        gap: 1.3rem;
     }
 
     &:hover{

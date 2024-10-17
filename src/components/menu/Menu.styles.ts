@@ -31,11 +31,11 @@ export const LargeMenuSection = styled.div`
     }
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled.div<{ active: boolean }>`
     display: flex;
     color: ${({ theme }) => theme.text};
     border-radius: 0.5rem;
-    /* background-color: ${({ theme }) => theme.grey2}; */
+    background-color: ${({ active, theme }) => active ? theme.grey2 : null};
 
     &.small{
         font-size: 26px;

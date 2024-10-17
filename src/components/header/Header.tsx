@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import {
     HeaderMoreSection,
@@ -15,12 +15,31 @@ import { CgMoreVerticalAlt } from "react-icons/cg";
 import { Settings } from "../Settings/Settings";
 import { useAppContext } from "../../context/App.context";
 import { LuSearch } from "react-icons/lu";
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 export const Header = (): JSX.Element => {
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
 
     const { text, setSearchBarText } = useAppContext();
+
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition
+      } = useSpeechRecognition();
+
+      if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+      }
+
+      const handleVoiceSearchClick: MouseEventHandler<HTMLDivElement> = () => {
+        SpeechRecognition.startListening({ continuous: true, interimResults: true });
+      };
+
+      console.log("Transcript", transcript);
+      console.log("Listening", listening);
 
     return (
         <>
@@ -51,8 +70,9 @@ export const Header = (): JSX.Element => {
                     <Icon
                             data-tooltip-id="voiceSearch"
                             data-tooltip-content={text.voiceSearch} 
-                            onClick={() => null} 
-                            $showBackground>
+                            onClick={handleVoiceSearchClick} 
+                            $showBackground
+                            className={listening ? 'listening' : ''}>
                             <FaMicrophone size={19} />
                         </Icon>
                 </SearchSection>

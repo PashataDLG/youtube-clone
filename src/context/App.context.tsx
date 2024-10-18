@@ -1,7 +1,5 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 import { ITranslations, LANGUAGE } from '../utils/translations';
-import { createClient } from 'pexels';
-import { PEXELES_API } from '../utils/pexels';
 import { useFetchVideos } from '../hooks/useFetchVideos';
 
 interface IAppContextValue {
@@ -42,7 +40,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     const [language, setLanguage] = useState<'english' | 'french'>('english');
     const [searchBarText, setSearchBarText] = useState<string>('');
     const [isMenuSmall, setIsMenuSmall] = useState<boolean>(false);
-    const [activeMenuText, setActiveMenuText] = useState<string>('home');
+    const [activeMenuText] = useState<string>('home');
     const [activeCategory, setActiveCategory] = useState<string>('All');
 
     useFetchVideos(activeCategory);

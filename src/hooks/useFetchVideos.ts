@@ -15,7 +15,7 @@ const fetchVideos = async (query: string, setVideos: Dispatch<SetStateAction<Vid
         if ('videos' in response) {
             const mappedVideos: Video[] = response.videos.map((video: any) => ({
                 ...video,
-                avg_color: video.avg_color || '', // Provide a default value for avg_color
+                avg_color: video.avg_color || '',
             }));
             setVideos({
                 videos: mappedVideos,

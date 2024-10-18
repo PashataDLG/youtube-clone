@@ -21,7 +21,7 @@ interface IAppContextValue {
 
 const AppContext = createContext<IAppContextValue | null>(null);
 
-const client = createClient(PEXELES_API);
+
 
 export const useAppContext = () => {
     const appContext = useContext(AppContext);
@@ -45,22 +45,9 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     const [activeMenuText, setActiveMenuText] = useState<string>('home');
     const [activeCategory, setActiveCategory] = useState<string>('All');
 
-    const fetchVideos = async (query: string) => {
-        try {
-            const response = await client.videos.search({
-                query,
-                per_page: 44,
-            });
+    useFetchVideos(activeCategory);
 
-            console.log("response - " + response);
-        } catch (error) {
-            console.log('there was an error fetching videos' + error);
-        }
-    };
-
-    useFetchVideos(fetchVideos, activeCategory);
-
-    useFetchVideos(fetchVideos, searchBarText);
+    useFetchVideos(searchBarText);
 
     const toggleTheme = (): void => {
         setTheme((currTheme) => currTheme === 'light' ? 'dark' : 'light');

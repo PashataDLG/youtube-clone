@@ -2,6 +2,7 @@ import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffe
 import { ITranslations, LANGUAGE } from '../utils/translations';
 import { createClient } from 'pexels';
 import { PEXELES_API } from '../utils/pexels';
+import { useFetchVideos } from '../hooks/useFetchVideos';
 
 interface IAppContextValue {
     theme: 'light' | 'dark';
@@ -44,10 +45,6 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     const [activeMenuText, setActiveMenuText] = useState<string>('home');
     const [activeCategory, setActiveCategory] = useState<string>('All');
 
-    useEffect(() => {
-        fetchVideos(activeCategory)
-    }, [activeCategory]);
-
     const fetchVideos = async (query: string) => {
         try {
             const response = await client.videos.search({
@@ -60,6 +57,10 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
             console.log('there was an error fetching videos' + error);
         }
     };
+
+    useFetchVideos(fetchVideos, activeCategory);
+
+    useFetchVideos(fetchVideos, searchBarText);
 
     const toggleTheme = (): void => {
         setTheme((currTheme) => currTheme === 'light' ? 'dark' : 'light');

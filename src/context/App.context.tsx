@@ -15,11 +15,55 @@ interface IAppContextValue {
     activeMenuText: string;
     activeCategory: string;
     setActiveCategory: Dispatch<SetStateAction<string>>;
+    videos: VideoApiResponse;
+}
+
+interface VideoFile {
+    id: number;
+    quality: string;
+    file_type: string;
+    width: number;
+    height: number;
+    fps: number;
+    link: string;
+    size: number;
+}
+
+interface VideoPicture {
+    id: number;
+    nr: number;
+    picture: string;
+}
+
+export interface Video {
+    id: number;
+    width: number;
+    height: number;
+    duration: number;
+    full_res: null | string;
+    tags: string[];
+    url: string;
+    image: string;
+    avg_color: null | string;
+    user: {
+        id: number;
+        name: string;
+        url: string;
+    };
+    video_files: VideoFile[];
+    video_pictures: VideoPicture[];
+}
+
+export interface VideoApiResponse {
+    page: number;
+    per_page: number;
+    videos: Video[];
+    total_results: number;
+    next_page: string;
+    url: string;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
-
-
 
 export const useAppContext = () => {
     const appContext = useContext(AppContext);
@@ -42,10 +86,20 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     const [isMenuSmall, setIsMenuSmall] = useState<boolean>(false);
     const [activeMenuText] = useState<string>('home');
     const [activeCategory, setActiveCategory] = useState<string>('All');
+    const [videos, setVideos] = useState<VideoApiResponse>({
+        page: 0,
+        per_page: 0,
+        videos: [],
+        total_results: 0,
+        next_page: '',
+        url: '',
+    });
 
-    useFetchVideos(activeCategory);
+    useFetchVideos(activeCategory, setVideos);
 
-    useFetchVideos(searchBarText);
+    useFetchVideos(searchBarText, setVideos);
+
+    console.log(videos);
 
     const toggleTheme = (): void => {
         setTheme((currTheme) => currTheme === 'light' ? 'dark' : 'light');
@@ -71,7 +125,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
         toggleMenuSize,
         activeMenuText,
         activeCategory,
-        setActiveCategory
+        setActiveCategory,
+        videos
     };
 
     return (

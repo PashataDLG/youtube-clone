@@ -10,9 +10,9 @@ export const HomepageVideos = (): JSX.Element => {
     const THIRD_VIDEO_SECTION = videos.splice(20, 28);
 
     return (
-        <StyledHomepageVideos>
+        <StyledHomepageVideos> 
             <RegularVideoThumbnailsContainer>
-                {FIRST_VIDEO_SECTION.map((video, index) => <RegularVideoItem video={video}/>)}
+                {FIRST_VIDEO_SECTION.map((video, index) => <RegularVideoItem key={index} video={video} />)}
             </RegularVideoThumbnailsContainer>
         </StyledHomepageVideos>
     );

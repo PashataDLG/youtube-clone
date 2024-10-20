@@ -36,6 +36,6 @@ const fetchVideos = async (query: string, setVideos: Dispatch<SetStateAction<Vid
 
 export const useFetchVideos = (query: string, setVideos: React.Dispatch<React.SetStateAction<VideoApiResponse>>) => {
     useEffect(() => {
-        fetchVideos(query, setVideos);
+        query && fetchVideos(query, setVideos);
     }, [query]);
 };

@@ -5,9 +5,9 @@ import { RegularVideoItem } from "../regularVideoItem/RegularVideoItem";
 export const HomepageVideos = (): JSX.Element => {
     const { videos: { videos } } = useAppContext();
 
-    const FIRST_VIDEO_SECTION = videos.splice(0, 8);
-    const SECOND_VIDEO_SECTION = videos.splice(8, 20);
-    const THIRD_VIDEO_SECTION = videos.splice(20, 28);
+    const FIRST_VIDEO_SECTION = videos.slice(0, 8);
+    const SECOND_VIDEO_SECTION = videos.slice(8, 20);
+    const THIRD_VIDEO_SECTION = videos.slice(20, 28);
 
     return (
         <StyledHomepageVideos> 

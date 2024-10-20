@@ -1,7 +1,8 @@
 import { useEffect, Dispatch, SetStateAction } from "react";
 import { PEXELES_API } from "../utils/pexels";
 import { createClient } from "pexels";
-import { VideoApiResponse, Video } from "../context/App.context";
+import { VideoApiResponse } from "../context/App.context";
+import { Video } from "pexels";
 
 const client = createClient(PEXELES_API);
 

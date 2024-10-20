@@ -1,6 +1,7 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 import { ITranslations, LANGUAGE } from '../utils/translations';
 import { useFetchVideos } from '../hooks/useFetchVideos';
+import { Video } from 'pexels';
 
 interface IAppContextValue {
     theme: 'light' | 'dark';
@@ -35,24 +36,24 @@ interface VideoPicture {
     picture: string;
 }
 
-export interface Video {
-    id: number;
-    width: number;
-    height: number;
-    duration: number;
-    full_res: null | string;
-    tags: string[];
-    url: string;
-    image: string;
-    avg_color: null | string;
-    user: {
-        id: number;
-        name: string;
-        url: string;
-    };
-    video_files: VideoFile[];
-    video_pictures: VideoPicture[];
-}
+// export interface Video {
+//     id: number;
+//     width: number;
+//     height: number;
+//     duration: number;
+//     full_res: null | string;
+//     tags: string[];
+//     url: string;
+//     image: string;
+//     avg_color: null | string;
+//     user: {
+//         id: number;
+//         name: string;
+//         url: string;
+//     };
+//     video_files: VideoFile[];
+//     video_pictures: VideoPicture[];
+// }
 
 export interface VideoApiResponse {
     page: number;

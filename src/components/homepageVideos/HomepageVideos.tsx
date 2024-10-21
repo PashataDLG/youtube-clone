@@ -16,6 +16,9 @@ export const HomepageVideos = (): JSX.Element => {
                 {FIRST_VIDEO_SECTION.map((video, index) => <RegularVideoItem key={index} video={video} />)}
             </RegularVideoThumbnailsContainer>
             <VideoShorts videos={SECOND_VIDEO_SECTION} />
+            <RegularVideoThumbnailsContainer>
+                {THIRD_VIDEO_SECTION.map((video, index) => <RegularVideoItem key={index} video={video} />)}
+            </RegularVideoThumbnailsContainer>
         </StyledHomepageVideos>
     );
 };

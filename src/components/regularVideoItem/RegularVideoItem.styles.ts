@@ -72,4 +72,20 @@ export const RegularVideoTitleSubtitle = styled.div`
         font-size: 16px;
         font-weight: 600;
      };
+
+     .name{
+        font-size: 14px;
+        margin: 0.5rem 0 .2rem 0;
+        color: ${({ theme }) => theme.grey3};
+     }
+     .details{
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: .2rem;
+        color: ${({ theme }) => theme.grey3};
+     }
+     .dot{
+        font-size: 8px;
+     }
 `;

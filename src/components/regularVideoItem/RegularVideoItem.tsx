@@ -50,6 +50,12 @@ export const RegularVideoItem = ({ video }: IRegularVideoItem): JSX.Element => {
                         {getTitle(video.url).slice(0, TITLE_LENGTH)}
                         {getTitle(video.url).length > TITLE_LENGTH && "..."}
                     </Text>
+                    <Text className="name">
+                        {video.user.name}
+                    </Text>
+                    <Text className="details">
+                        {video.duration}M views <span className="dot">&#9679;</span> 2 hours ago
+                    </Text>
                 </RegularVideoTitleSubtitle>
             </RegularVideoContent>
         </StyledRegularVideoItem>

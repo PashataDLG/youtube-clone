@@ -46,3 +46,12 @@ export const MoreLessButton = styled.button`
         color: ${({ theme }) => theme.text};
     }
 `;
+
+export const ShortVideosContainer = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin-top: 1.5rem;
+`;

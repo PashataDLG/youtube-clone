@@ -1,6 +1,7 @@
 import { RegularVideoThumbnailsContainer, StyledHomepageVideos } from "./HomepageVideos.styles";
 import { useAppContext } from "../../context/App.context";
 import { RegularVideoItem } from "../regularVideoItem/RegularVideoItem";
+import { VideoShorts } from "../videoShorts/VideoShorts";
 
 export const HomepageVideos = (): JSX.Element => {
     const { videos: { videos } } = useAppContext();
@@ -14,6 +15,7 @@ export const HomepageVideos = (): JSX.Element => {
             <RegularVideoThumbnailsContainer>
                 {FIRST_VIDEO_SECTION.map((video, index) => <RegularVideoItem key={index} video={video} />)}
             </RegularVideoThumbnailsContainer>
+            <VideoShorts videos={SECOND_VIDEO_SECTION} />
         </StyledHomepageVideos>
     );
 };
